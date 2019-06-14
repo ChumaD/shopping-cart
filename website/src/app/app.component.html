@@ -1,0 +1,42 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  
+  <img width="300" src="assets/img/images.png">
+</div>
+<mat-card >
+<mat-grid-list cols="3" rowHeight="1:1">
+  <mat-grid-tile *ngFor="let shopping of website" >
+    <div>
+        <img  src="../assets/img/{{shopping.pic}}" width="280px" height="240px"/>
+        <p>
+            {{ shopping.description }}
+            R{{ shopping.price }}
+          </p>
+          
+          <button mat-flat-button color="primary" (click)="addtocart(shopping)">Add to cart</button>
+      </div>
+      </mat-grid-tile>
+      </mat-grid-list>
+</mat-card>
+<h2>Shopping cart</h2>
+<mat-card style="text-align:center"> 
+
+    <div *ngIf="empty">
+        <h3>The shopping cart is empty!!</h3>
+         </div>
+<mat-grid-list cols="3" rowHeight="1:1">
+    <mat-grid-tile  *ngFor="let shop of shoppings" >
+  <mat-card-content>
+ <img  src="../assets/img/{{shop.pic}}" width="280px" height="240px"/>
+ <p>
+ {{shop.description}}
+ R{{shop.price}}
+</p>
+      <button mat-raised-button color="primary" (click)="Removeitem(shop)"><mat-icon>remove</mat-icon></button>
+    </mat-card-content>
+    </mat-grid-tile>
+  </mat-grid-list>
+
+</mat-card>
+<p>Total Cost {{total}}</p>
+<router-outlet></router-outlet>
